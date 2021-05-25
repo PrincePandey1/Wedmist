@@ -44,9 +44,9 @@ class sigin_activity : AppCompatActivity() {
             val databaseHandler = DatabaseHandler(this)
             val user: List<UserModelClass> = databaseHandler.viewUser()
 
-            val userArrayName = Array<String>(user.size){"null"}
-            val userArrayEmail = Array<String>(user.size){"null"}
-            val userArrayPassword = Array<String>(user.size){"null"}
+            val userArrayName = Array(user.size){"null"}
+            val userArrayEmail = Array(user.size){"null"}
+            val userArrayPassword = Array(user.size){"null"}
 
             var index = 0
             for(e in user){
