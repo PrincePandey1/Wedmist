@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.WindowManager
+import android.widget.LinearLayout
+import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_sign_in_activity.*
 import kotlinx.android.synthetic.main.activity_sign_up_activity.*
 import kotlinx.android.synthetic.main.activity_sign_up_activity.toolbar_sign_up_activity
@@ -54,9 +56,9 @@ class sigin_activity : AppCompatActivity() {
                 userArrayPassword[index] = e.userPassword
                 index++
             }
-
-            val myListAdapter = MyListAdapter(this, userArrayName, userArrayPassword, userArrayEmail)
+            val myListAdapter = MyListAdapter(this,userArrayName,userArrayEmail,userArrayPassword)
             listView.adapter = myListAdapter
+
         }
 
     }

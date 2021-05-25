@@ -13,43 +13,20 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.custom_list.view.*
 
-class ListAdapter (private val context: Context, private val items:ArrayList<UserModelClass>):RecyclerView.Adapter<ListAdapter.MyViewHolder>() {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        return MyViewHolder(
-                LayoutInflater.from(context).inflate(R.layout.custom_list, parent,false))
+class MyListAdapter(private val context: Activity, private val name: Array<String>, private val email: Array<String>, private val password: Array<String>)
+    : ArrayAdapter<String>(context, R.layout.custom_list, name) {
 
-    }
+    override fun getView(position: Int, view: View?, parent: ViewGroup): View {
+        val inflater = context.layoutInflater
+        val rowView = inflater.inflate(R.layout.custom_list, null, true)
 
-    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+        val idText = rowView.findViewById(R.id.textViewName) as TextView
+        val nameText = rowView.findViewById(R.id.textViewName) as TextView
+        val emailText = rowView.findViewById(R.id.textViewEmail) as TextView
 
-        val item = items.get(position)
-
-        holder.tv_Name.text = item.userName
-        holder.tv_Email.text = item.userEmail
-        holder.tv_password.text = item.userPassword
-
-        if(position % 2 == 0){
-            holder.tv_main.setBackgroundColor(
-                    ContextCompat.getColor(context,R.color.colorPrimary))
-        }else{
-            holder.tv_main.setBackgroundColor(
-                    ContextCompat.getColor(context,R.color.white))
-        }
-
-
-    }
-
-    override fun getItemCount(): Int {
-        return   items.size
-    }
-    class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
-
-        val tv_Name = itemView.textViewName
-        val  tv_Email = itemView.textViewEmail
-        val   tv_password  = itemView.textViewPassword
-        val  tv_main = itemView.llMain
-
-
-
+        idText.text = "Id: ${name[position]}"
+        nameText.text = "Name: ${email[position]}"
+        emailText.text = "Email: ${password[position]}"
+        return rowView
     }
 }
